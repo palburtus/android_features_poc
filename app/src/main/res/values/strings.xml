@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">AppIndexingPoc</string>
+
+    <!--Home-->
+    <string name="home_sample_text">Welcome!</string>
+    <string name="first_activity_button_label">First</string>
+    <string name="news_activity_button_label">News</string>
+
+    <!--FirstActivity-->
+    <string name="first_sample_text">abdgdgadgafsdafafsdsaf</string>
+
+    <!--News-->
+    <string name="news_sample_text">UybJxEzyWRoCwaSMgHym
+qvAYPHiPaXWXYSsCWVIx
+KyttJYkGqwMnUFdiihEy
+shYZBRRZTZtHYXEMBvJt
+rmsYXIpubKxlulILwZjz
+gYMLZMeWfSAUbIrbIvaH
+lzjdLcfceOtPQeoBzdEN
+VFADVztFZiQJCPqAGPiF
+ehkxjezKsIoBxUMojanx
+XFDnQRuIOqgAjmDYzFNI
+cXiWaAJONIcjcTuAjdjq
+sClFtKiAtmyEKqWMtxmY
+pxgutAhpFqoJdNgFtMwn
+NdqHsqaOTyUAhaOBeBUC
+VVIUrDfXnsjLOohSoXHG
+IEpGkOYdjlzmGsvuZQRr
+uMStfVkSqGDNOOhVymmD
+GxhTUEzFsbgSpmqTpHrL
+TGyyDhlzpMnKGlpSYNye
+pVVTOAqYsyOzuRPWBQKL
+PtBjOMGrmljDdDTCWUaH
+QGrcOipBLUbhJNGbTsfL
+WbkrkPDcxrLEOZgKLnvU
+TeSbpatcdojxyAccWVAm
+bxqFzVmoyYpLdvKeAYYy
+tXVkOGhXqbxetuRdbRKY
+BAioZZBgSMZKcqpLYLWZ
+MWgQaJsKEPyuVuIVgaEQ
+FVcvVXNUwodMGHibfrlP
+iSPLCYeVhbPoOHBOsHxb
+yDNsuftBYWdmRMpNMwqu
+vwrwdSdfMEkGeuodKNhB
+sgqQuTxmQGJSrRrYEDeM
+GTmvyemBtyxsrsbGxWPW
+osAUhkzbioejqhGfWNMf
+KiNGCHncYqYIsYnEenCA
+NOwWejTjeyTffZDdZJCj
+fKKQFOJEGgFhiZlcpncC
+wEexSHzpVrTRImJEuMZy
+VXkUelzDBzeOePjTlWWB
+FzXaaNSRoTjXagkkiDIi
+AaRRiObyZrAwKSHjmwJr
+NhRHhnpkeTzrTInUkjzx
+SsigfrcENSCzndEPrKIL
+epZvGXlvjxEKLzqqvBWw
+MwMngxMvWLepfvrTZNhR
+QcXncxqZbgslZiJAMOTy
+kMfkHMyIUTklnCAmVdBM
+ZtWLwMMBoDiXaXLWVTGx
+YPzNjpMHTgyeIWbzVuuE</string>
+
+</resources>
