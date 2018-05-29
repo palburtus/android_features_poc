@@ -1,0 +1,9 @@
+apply plugin: 'com.android.instantapp'
+
+dependencies {
+    implementation project(':base')
+    implementation project(":news")
+    implementation project(":stories")
+
+
+}
