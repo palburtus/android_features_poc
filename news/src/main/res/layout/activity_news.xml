@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Check out this article"/>
+                android:text="View Related Articles in Our App "/>
 
         </LinearLayout>
 
