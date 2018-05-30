@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.instantapps.InstantApps;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.appindexing.Action;
 import com.google.firebase.appindexing.FirebaseUserActions;
 import com.google.firebase.appindexing.builders.Actions;
@@ -41,6 +43,7 @@ public class NewsActivity extends Activity {
         } else {
             //TODO: load article
             mSeeArticleButton.setVisibility(View.GONE);
+
             Intent intent = getIntent();
             String action = intent.getAction();
             String data = intent.getDataString();
