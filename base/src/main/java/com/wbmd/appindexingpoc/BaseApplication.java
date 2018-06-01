@@ -1,6 +1,7 @@
 package com.wbmd.appindexingpoc;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 
@@ -14,8 +15,9 @@ public class BaseApplication extends Application {
         super.onCreate();
 //        FirebaseApp.initializeApp(getApplicationContext());
 
-//        if(!FirebaseApp.getApps(this).isEmpty()) {
-//            FirebaseApp.initializeApp(this);
-//        }
+        if(!FirebaseApp.getApps(this).isEmpty()) {
+            Log.e("application", "firebase empty");
+            FirebaseApp.initializeApp(this);
+        }
     }
 }

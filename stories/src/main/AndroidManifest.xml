@@ -10,10 +10,12 @@
 
         <data
         android:scheme="http"
-        android:host="alburt.us" />
+        android:host="alburt.us"
+            android:pathPrefix="/default.html"/>
         <data
         android:scheme="https"
-        android:host="alburt.us" />
+        android:host="alburt.us"
+            android:pathPrefix="/default.html"/>
         </intent-filter>
         </activity>
     </application>

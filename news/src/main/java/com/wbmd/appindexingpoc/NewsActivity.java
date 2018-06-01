@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.instantapps.InstantApps;
 import com.google.firebase.FirebaseApp;
@@ -28,7 +29,7 @@ public class NewsActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
+        Log.e("news activity", "oncreate");
         mSeeArticleButton = findViewById(R.id.see_article_button);
         final Boolean isInstantApp = InstantApps.isInstantApp(this);
         if(isInstantApp) {
@@ -41,13 +42,15 @@ public class NewsActivity extends Activity {
             });
 
         } else {
-            //TODO: load article
             mSeeArticleButton.setVisibility(View.GONE);
 
             Intent intent = getIntent();
             String action = intent.getAction();
             String data = intent.getDataString();
+            TextView text = findViewById(R.id.message);
+            text.setText(intent.getStringExtra("message"));
             if (Intent.ACTION_VIEW.equals(action) && data != null) {
+                text.setText(intent.getStringExtra(String.valueOf(action)));
                 // TODO: Parse the data URL and show right content for the URL.
             }
         }
@@ -62,25 +65,25 @@ public class NewsActivity extends Activity {
 //     * ATTENTION: This was auto-generated to implement the App Indexing API.
 //     * See https://g.co/AppIndexing/AndroidStudio for more information.
 //     */
-//    public Action getIndexApiAction() {
-//        return Actions.newView("News", "http://alburt.us/news.html");
-//    }
-//
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//
-//        // ATTENTION: This was auto-generated to implement the App Indexing API.
-//        // See https://g.co/AppIndexing/AndroidStudio for more information.
-//        FirebaseUserActions.getInstance().start(getIndexApiAction());
-//    }
-//
-//    @Override
-//    public void onStop() {
-//
-//        // ATTENTION: This was auto-generated to implement the App Indexing API.
-//        // See https://g.co/AppIndexing/AndroidStudio for more information.
-//        FirebaseUserActions.getInstance().end(getIndexApiAction());
-//        super.onStop();
-//    }
+    public Action getIndexApiAction() {
+        return Actions.newView("News", "http://alburt.us/news.html");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        FirebaseUserActions.getInstance().start(getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        FirebaseUserActions.getInstance().end(getIndexApiAction());
+        super.onStop();
+    }
 }
