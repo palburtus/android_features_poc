@@ -21,5 +21,6 @@
                 android:pathPrefix="/news.html" />
         </intent-filter>
     </activity>
+        <activity android:name="com.wbmd.appindexingpoc.ProfileDetailsActivity"/>
 </application>
 </manifest>

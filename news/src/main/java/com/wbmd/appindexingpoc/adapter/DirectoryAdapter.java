@@ -1,14 +1,15 @@
-package com.wbmd.appindexingpoc;
+package com.wbmd.appindexingpoc.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wbmd.appindexingpoc.viewholder.*;
+import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.news.R;
 
@@ -19,16 +20,18 @@ import java.util.List;
 public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
     List<Profile> mProfileList = new ArrayList<>();
     Context mContext;
+    ICallback mListener;
 
-    public DirectoryAdapter(Context mContext) {
-        this.mContext = mContext;
+    public DirectoryAdapter(Context context, ICallback listener) {
+        this.mContext = context;
+        this.mListener = listener;
     }
 
     @NonNull
     @Override
     public DirectoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View v = inflater.inflate(R.layout.item_profile, parent, false);
+        View v = inflater.inflate(R.layout.item_list, parent, false);
         return new DirectoryViewHolder(v);
     }
 
@@ -38,7 +41,7 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
         holder.onBind(p, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("onclick", String.valueOf(holder.getAdapterPosition()));
+                mListener.onItemClicked(mProfileList.get(holder.getAdapterPosition()));
             }
         });
     }
@@ -46,10 +49,10 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
     @Override
     public int getItemCount() {
 
-        if(mProfileList != null && mProfileList.size() < 1){
-            return 0;
-        } else {
+        if(mProfileList != null && mProfileList.size() > 1){
             return mProfileList.size();
+        } else {
+            return 0;
         }
     }
 
