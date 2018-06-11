@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application>
-    <activity android:name="com.wbmd.appindexingpoc.MainDirectoryActivity">
+    <activity android:name="com.wbmd.appindexingpoc.activity.MainDirectoryActivity">
         <intent-filter android:autoVerify="true">
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
@@ -21,6 +21,6 @@
                 android:pathPrefix="/news.html" />
         </intent-filter>
     </activity>
-        <activity android:name="com.wbmd.appindexingpoc.ProfileDetailsActivity"/>
+        <activity android:name="com.wbmd.appindexingpoc.activity.ProfileDetailsActivity"/>
 </application>
 </manifest>

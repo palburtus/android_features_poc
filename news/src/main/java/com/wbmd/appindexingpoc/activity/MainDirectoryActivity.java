@@ -1,4 +1,4 @@
-package com.wbmd.appindexingpoc;
+package com.wbmd.appindexingpoc.activity;
 
 import android.content.Intent;
 import android.net.Uri;
