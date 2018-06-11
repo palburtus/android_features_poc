@@ -4,7 +4,7 @@
     package="com.wbmd.appindexingpoc.base">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="false"
@@ -30,15 +30,13 @@
 
                 <data
                     android:scheme="https"
-                    android:host="alburt.us"
-                    android:path="/default.html" />
+                    android:host="alburt.us" />
                 <data
                     android:scheme="http"
-                    android:host="alburt.us"
-                    android:path="/default" />
+                    android:host="alburt.us"/>
             </intent-filter>
             <meta-data android:name="default-url"
-                android:value="https://alburt.us/default" />
+                android:value="https://alburt.us" />
         </activity>
 
     </application>
