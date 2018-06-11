@@ -68,25 +68,25 @@ public class FirstActivity extends AppCompatActivity {
 //     * ATTENTION: This was auto-generated to implement the App Indexing API.
 //     * See https://g.co/AppIndexing/AndroidStudio for more information.
 //     */
-    public Action getIndexApiAction() {
-        return Actions.newView("First", "http://alburt.us/default.html");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        FirebaseUserActions.getInstance().start(getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        FirebaseUserActions.getInstance().end(getIndexApiAction());
-        super.onStop();
-    }
+//    public Action getIndexApiAction() {
+//        return Actions.newView("First", "http://alburt.us/default.html");
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        FirebaseUserActions.getInstance().start(getIndexApiAction());
+//    }
+//
+//    @Override
+//    public void onStop() {
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        FirebaseUserActions.getInstance().end(getIndexApiAction());
+//        super.onStop();
+//    }
 }

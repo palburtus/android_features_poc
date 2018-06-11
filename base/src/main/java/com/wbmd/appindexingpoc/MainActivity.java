@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.e("click", "news");
                 Intent intent = new Intent();
-                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.NewsActivity");
+                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.MainDirectoryActivity");
                 intent.putExtra("message", "from app");
                 startActivity(intent);
             }
