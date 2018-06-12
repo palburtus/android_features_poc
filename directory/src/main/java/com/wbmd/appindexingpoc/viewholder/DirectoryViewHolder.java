@@ -1,9 +1,5 @@
 package com.wbmd.appindexingpoc.viewholder;
 
-
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +7,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.wbmd.appindexingpoc.model.Profile;
-import com.wbmd.appindexingpoc.news.R;
+import com.wbmd.appindexingpoc.directory.R;
 
 public class DirectoryViewHolder extends RecyclerView.ViewHolder{
     private TextView mNameText;

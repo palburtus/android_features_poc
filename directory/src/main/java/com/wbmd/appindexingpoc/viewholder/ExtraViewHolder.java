@@ -4,11 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.wbmd.appindexingpoc.news.R;
-
-/**
- * Created by acaldwell on 6/11/18.
- */
+import com.wbmd.appindexingpoc.directory.R;
 
 public class ExtraViewHolder extends RecyclerView.ViewHolder {
 

@@ -8,6 +8,7 @@
     <string name="google_play_link">https://play.google.com/store/apps/details?id=com.wbmd.appindexingpoc</string>
     <string name="profile">profile</string>
     <string name="player_roster_title">Player Roster</string>
+
     <string-array name="baseball_extras">
         <item>Experience</item>
         <item>Stats</item>

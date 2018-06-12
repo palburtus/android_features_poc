@@ -1,7 +1,6 @@
 package com.wbmd.appindexingpoc.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -16,7 +15,7 @@ import com.google.gson.Gson;
 import com.wbmd.appindexingpoc.adapter.DirectoryAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
-import com.wbmd.appindexingpoc.news.R;
+import com.wbmd.appindexingpoc.directory.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,8 +80,15 @@ public class MainDirectoryActivity extends BaseActivity {
         list = gson.fromJson(json, type);
 
         for (Profile profileItem : list) {
-            profileItem = getDefaultBaseballProfile();
+//            profileItem = getDefaultBaseballProfile();
+//            profileItem.setFullName(cleanString(profileItem.getFullName()));
             profileItem.setFullName(cleanString(profileItem.getFullName()));
+            profileItem.setLogo("ny_logo");
+            profileItem.setAddress(this.getString(R.string.default_address_top));
+            profileItem.setAddressBottom(this.getString(R.string.default_address_bottom));
+            profileItem.setSpecialty(this.getString(R.string.default_baseball_specialty));
+            profileItem.setLocationPhoto("baseball_location");
+            profileItem.setPhoto("placeholder");
         }
         return list;
     }
@@ -107,13 +113,11 @@ public class MainDirectoryActivity extends BaseActivity {
                     InstantApps.showInstallPrompt(MainDirectoryActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-
         }
     }
 
     private void setUpToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
         ActionBar bar = getSupportActionBar();
         if (bar != null) {

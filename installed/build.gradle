@@ -31,6 +31,6 @@ android {
 
 dependencies {
     implementation project(':base')
-    implementation project(":news")
+    implementation project(':directory')
     implementation project(":stories")
 }

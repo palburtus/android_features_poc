@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wbmd.appindexingpoc.callback.ICallback;
-import com.wbmd.appindexingpoc.news.R;
+import com.wbmd.appindexingpoc.directory.R;
 import com.wbmd.appindexingpoc.viewholder.ExtraViewHolder;
 
 import java.util.List;

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.wbmd.appindexingpoc.viewholder.*;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
-import com.wbmd.appindexingpoc.news.R;
+import com.wbmd.appindexingpoc.directory.R;
 
 import java.util.ArrayList;
 import java.util.List;

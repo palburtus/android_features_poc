@@ -44,6 +44,6 @@ dependencies {
         exclude module: "espresso-idling-resource"
         exclude group: "com.android.support"
     }
-    feature project(":news")
+    feature project(':directory')
     feature project(":stories")
 }

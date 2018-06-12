@@ -18,7 +18,7 @@ import com.google.android.instantapps.InstantApps;
 import com.wbmd.appindexingpoc.adapter.ExtraAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
-import com.wbmd.appindexingpoc.news.R;
+import com.wbmd.appindexingpoc.directory.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,16 @@ public class ProfileDetailsActivity extends BaseActivity {
 
         Intent i = getIntent();
         if(i.getParcelableExtra(getString(R.string.profile)) == null){
-            mProfile = getDefaultBaseballProfile();
+//            mProfile = getDefaultBaseballProfile();
+            Profile p = new Profile();
+            p.setFullName("Jeff Valilind");
+            p.setLogo("ny_logo");
+            p.setAddress(this.getString(R.string.default_address_top));
+            p.setAddressBottom(this.getString(R.string.default_address_bottom));
+            p.setSpecialty(this.getString(R.string.default_baseball_specialty));
+            p.setLocationPhoto("baseball_location");
+            p.setPhoto("placeholder");
+            mProfile = p;
         } else {
             mProfile = i.getParcelableExtra(getString(R.string.profile));
         }
