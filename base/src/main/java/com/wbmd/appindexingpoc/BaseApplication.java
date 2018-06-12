@@ -13,6 +13,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.e("BaseApplication", "onCreate");
 //        FirebaseApp.initializeApp(getApplicationContext());
 
         if(!FirebaseApp.getApps(this).isEmpty()) {

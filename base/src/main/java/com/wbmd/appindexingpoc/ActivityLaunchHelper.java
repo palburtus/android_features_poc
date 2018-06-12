@@ -5,7 +5,7 @@ package com.wbmd.appindexingpoc;
  */
 
 public class ActivityLaunchHelper {
-    private static final String URL_BASE = "https://palburt.us";
+    private static final String URL_BASE = "https://alburt.us";
     private static final String URL_NEWS = URL_BASE + "/news.html";
     private static final String URL_DEFAULT = URL_BASE + "/default.html";
 
