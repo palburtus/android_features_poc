@@ -8,13 +8,17 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/photo_placeholder"
-        android:layout_margin="5dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/photo_placeholder" />
     <TextView
         android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:textSize="17sp"
+        android:fontFamily="sans-serif-medium"
         android:layout_toRightOf="@+id/profile_image"
         android:text="Jane Doe"/>
     <TextView
@@ -22,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/profile_image"
+        android:textSize="15sp"
         android:layout_below="@+id/name_text"
         android:text="Plastic Surgery"/>
     <TextView
@@ -29,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/profile_image"
+        android:textSize="12sp"
         android:layout_below="@+id/specialty_text"
         android:text="395 Hudson St."/>
     <TextView
@@ -37,13 +43,14 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/profile_image"
         android:layout_below="@+id/address_top_text"
+        android:textSize="12sp"
         android:text="New York, NY 10014"
         android:layout_marginBottom="2dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/list_divider"
         android:layout_below="@+id/address_bottom_text"/>
 
 </RelativeLayout>

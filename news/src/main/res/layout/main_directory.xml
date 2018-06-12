@@ -7,17 +7,24 @@
     android:orientation="vertical"
     tools:context="com.wbmd.appindexingpoc.activity.MainDirectoryActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
+        android:elevation="2dp"
         android:layout_height="?android:actionBarSize">
     </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/appbar_layout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -43,7 +50,9 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
-    android:text="View more in our app "/>
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+    android:text="@string/view_more_in_our_app"/>
     </LinearLayout>
 
 </RelativeLayout>

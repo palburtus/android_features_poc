@@ -1,3 +1,27 @@
 <resources>
+    <string name="default_address_top">395 Hudson St.</string>
+    <string name="default_address_bottom">New York, NY 10014</string>
+    <string name="default_baseball_specialty">Pitcher</string>
+    <string name="view_more_in_our_app">View more in our app</string>
+    <string name="profile_overview">Profile Overview</string>
+    <string name="player_profile_title">Player Profile</string>
+    <string name="google_play_link">https://play.google.com/store/apps/details?id=com.wbmd.appindexingpoc</string>
+    <string name="profile">profile</string>
+    <string name="player_roster_title">Player Roster</string>
+    <string-array name="baseball_extras">
+        <item>Experience</item>
+        <item>Stats</item>
+        <item>Batting</item>
+        <item>Defense</item>
+        <item>Salary</item>
+    </string-array>
+
+    <string-array name="doctor_extras">
+        <item>Experience</item>
+        <item>Ratings</item>
+        <item>Insurance</item>
+        <item>Office Information</item>
+        <item>Is This You?</item>
+    </string-array>
 
 </resources>

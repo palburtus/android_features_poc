@@ -57,7 +57,6 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
     }
 
     public void updateAdapter(List<Profile> list){
-        Log.e("updateAdapter", String.valueOf(list.size()));
         mProfileList.clear();
         mProfileList = list;
         notifyDataSetChanged();

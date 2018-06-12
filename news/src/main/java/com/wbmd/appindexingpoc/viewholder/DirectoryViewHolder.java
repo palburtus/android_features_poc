@@ -31,9 +31,10 @@ public class DirectoryViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void onBind(Profile profile, View.OnClickListener listener){
-        mNameText.setText(profile.getFirstName());
+        mNameText.setText(profile.getFullName());
         mSpecialty.setText(profile.getSpecialty());
         mAddressTextTop.setText(profile.getAddress());
+        mAddressTextBottom.setText(profile.getAddressBottom());
 
         Picasso.with(itemView.getContext())
                 .load(profile.getPhoto())

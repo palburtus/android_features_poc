@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -37,7 +36,6 @@ public class MainDirectoryActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_directory);
-        Log.e("news activity", "oncreate");
         setUpToolBar();
 
         Intent intent = getIntent();
@@ -50,12 +48,11 @@ public class MainDirectoryActivity extends AppCompatActivity {
             // TODO: Parse the data URL and show right content for the URL.
         }
         setUpRecyclerView();
-        mAdapter.updateAdapter(getProfileList());
+        mAdapter.updateAdapter(getBaseballProfileList());
         setUpConversionButton();
     }
 
     private void setUpRecyclerView() {
-        Log.e("MainDirectory", "Setup recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainDirectoryActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -70,15 +67,15 @@ public class MainDirectoryActivity extends AppCompatActivity {
 
     private void handleListItemClicked(Profile profile) {
         Intent i = new Intent(MainDirectoryActivity.this, ProfileDetailsActivity.class);
-        i.putExtra("profile", profile);
+        i.putExtra(this.getString(R.string.profile), profile);
         startActivity(i);
     }
 
-    private List<Profile> getProfileList() {
+    private List<Profile> getBaseballProfileList() {
         List<Profile> list = new ArrayList<>();
         String json = null;
         try {
-            InputStream is = MainDirectoryActivity.this.getAssets().open("Profiles.json");
+            InputStream is = MainDirectoryActivity.this.getAssets().open("BaseballProfiles.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -94,12 +91,24 @@ public class MainDirectoryActivity extends AppCompatActivity {
         list = gson.fromJson(json, type);
 
         for (Profile profileItem : list) {
+            profileItem.setFullName(cleanString(profileItem.getFullName()));
             profileItem.setLogo("ny_logo");
-            profileItem.setAddress("395 Hudson St. NY, NY 10014");
-            profileItem.setSpecialty("P");
+            profileItem.setAddress(this.getString(R.string.default_address_top));
+            profileItem.setAddressBottom(this.getString(R.string.default_address_bottom));
+            profileItem.setSpecialty(this.getString(R.string.default_baseball_specialty));
+            profileItem.setLocationPhoto("baseball_location");
             profileItem.setPhoto("placeholder");
         }
         return list;
+    }
+
+    private String cleanString(String str){
+        String cleanString = str;
+        if(str.contains("\\")) {
+            int index = str.lastIndexOf('\\');
+            cleanString = str.substring(0, index);
+        }
+        return cleanString;
     }
 
     private void setUpConversionButton() {
@@ -118,7 +127,7 @@ public class MainDirectoryActivity extends AppCompatActivity {
     }
 
     private Intent getPostInstallIntent() {
-        return new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.wbmd.appindexingpoc"))
+        return new Intent(Intent.ACTION_VIEW, Uri.parse(this.getString(R.string.google_play_link)))
                 .addCategory(Intent.CATEGORY_BROWSABLE);
     }
 
@@ -130,7 +139,7 @@ public class MainDirectoryActivity extends AppCompatActivity {
         if (bar != null) {
             bar.setDisplayHomeAsUpEnabled(false);
             bar.setDisplayShowTitleEnabled(true);
-            bar.setTitle("Player Roster");
+            bar.setTitle(R.string.player_roster_title);
         }
     }
 }

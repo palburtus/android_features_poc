@@ -13,9 +13,6 @@ import com.wbmd.appindexingpoc.viewholder.ExtraViewHolder;
 
 import java.util.List;
 
-/**
- * Created by acaldwell on 6/11/18.
- */
 
 public class ExtraAdapter extends RecyclerView.Adapter<ExtraViewHolder> {
     private List<String> mExtras;

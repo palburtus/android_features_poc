@@ -15,15 +15,21 @@ public class Profile implements Parcelable {
     @SerializedName("specialty")
     @Expose
     private String specialty;
-    @SerializedName("address")
+    @SerializedName("address_top")
     @Expose
-    private String address;
+    private String addressTop;
+    @SerializedName("address_bottom")
+    @Expose
+    private String addressBottom;
     @SerializedName("logo")
     @Expose
     private String logo;
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("location_photo")
+    @Expose
+    private String locationPhoto;
 
     public Profile() {
     }
@@ -31,7 +37,9 @@ public class Profile implements Parcelable {
     protected Profile(Parcel in) {
         fullName = in.readString();
         specialty = in.readString();
-        address = in.readString();
+        addressTop = in.readString();
+        addressBottom = in.readString();
+        locationPhoto = in.readString();
         logo = in.readString();
         photo = in.readString();
     }
@@ -48,11 +56,11 @@ public class Profile implements Parcelable {
         }
     };
 
-    public String getFirstName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFullName(String firstName) {
         this.fullName = firstName;
     }
 
@@ -65,11 +73,11 @@ public class Profile implements Parcelable {
     }
 
     public String getAddress() {
-        return address;
+        return addressTop;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.addressTop = address;
     }
 
     public String getLogo() {
@@ -97,8 +105,26 @@ public class Profile implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(fullName);
         dest.writeString(specialty);
-        dest.writeString(address);
+        dest.writeString(addressTop);
+        dest.writeString(addressBottom);
+        dest.writeString(locationPhoto);
         dest.writeString(logo);
         dest.writeString(photo);
+    }
+
+    public String getAddressBottom() {
+        return addressBottom;
+    }
+
+    public void setAddressBottom(String addressBottom) {
+        this.addressBottom = addressBottom;
+    }
+
+    public String getLocationPhoto() {
+        return locationPhoto;
+    }
+
+    public void setLocationPhoto(String locationPhoto) {
+        this.locationPhoto = locationPhoto;
     }
 }
