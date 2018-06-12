@@ -4,7 +4,7 @@
     package="com.wbmd.appindexingpoc.base">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="false"
@@ -17,10 +17,27 @@
         android:theme="@style/AppTheme"
         android:name="com.wbmd.appindexingpoc.BaseApplication">
 
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" />
         <activity android:name="com.wbmd.appindexingpoc.MainActivity">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="default-url"
+                android:value="https://alburt.us" />
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="alburt.us" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -30,15 +47,28 @@
 
                 <data
                     android:scheme="https"
-                    android:host="alburt.us"
-                    android:path="/default.html" />
+                    android:host="alburt.us" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:scheme="http"
-                    android:host="alburt.us"
-                    android:path="/default" />
+                    android:host="alburt.us" />
             </intent-filter>
-            <meta-data android:name="default-url"
-                android:value="https://alburt.us/default" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="alburt.us" />
+            </intent-filter>
         </activity>
 
     </application>

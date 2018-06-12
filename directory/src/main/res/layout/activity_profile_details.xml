@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/white">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:elevation="2dp"
+            android:layout_height="?android:actionBarSize">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar_layout">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/profile_image"
+                    android:text="profile"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/profile_specialty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/profile_name"
+                    android:text="specialty"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+             <LinearLayout
+                 android:id="@+id/rating_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                 android:layout_centerHorizontal="true"
+                 android:orientation="horizontal"
+                 android:visibility="gone"
+                 android:layout_below="@+id/profile_specialty">
+
+                    <RatingBar
+                        android:id="@+id/profile_rating_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:layout_gravity="center_vertical"
+                        android:stepSize="0.1" />
+
+                    <TextView
+                        android:id="@+id/profile_ratings_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="0 Ratings"
+                        android:textSize="11dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/profile_telephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="222-222-2222"
+                    android:textSize="12sp"
+                    android:textColor="@color/webmdblue"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/rating_layout"/>
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/doctor_location"
+        android:layout_below="@+id/profile_telephone" />
+
+    <TextView
+        android:id="@+id/profile_practice_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="NY Yankees"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/map"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/profile_practice_address_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/profile_practice_name"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/profile_practice_address_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/profile_practice_address_top"
+        android:text="New York, NY 10014"
+        android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/spacer"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/list_divider"
+                    android:layout_below="@+id/profile_practice_address_bottom" />
+
+                <TextView
+                    android:id="@+id/profile_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/profile_overview"
+                    android:lineSpacingMultiplier="1.25"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/spacer"/>
+
+                <View
+                    android:id="@+id/horizontal_divider_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/profile_overview"
+                    android:background="@color/list_divider" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/horizontal_divider_overview"/>
+    </RelativeLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/see_more_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:text="@string/view_more_in_our_app"/>
+    </LinearLayout>
+
+</RelativeLayout>

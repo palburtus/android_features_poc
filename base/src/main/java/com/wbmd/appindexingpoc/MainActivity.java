@@ -3,6 +3,7 @@ package com.wbmd.appindexingpoc;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,20 +20,25 @@ public class MainActivity extends AppCompatActivity {
         firstActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, FirstActivity.class);
-//                startActivity(intent);
+                Log.e("click", "first");
+                Intent intent = new Intent();
+                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.FirstActivity");
+                intent.putExtra("message", "from app");
+                startActivity(intent);
             }
         });
 
-//        Button newsActivityButton = (Button) findViewById(R.id.news_activity_button);
-//        newsActivityButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button newsActivityButton = (Button) findViewById(R.id.news_activity_button);
+        newsActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("click", "news");
+                Intent intent = new Intent();
+                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.MainDirectoryActivity");
+                intent.putExtra("message", "from app");
+                startActivity(intent);
+            }
+        });
 
     }
-
 }
