@@ -2,6 +2,9 @@
     package="com.wbmd.appindexingpoc.stories">
 
     <application>
+        <!--<meta-data-->
+            <!--android:name="asset_statements"-->
+            <!--android:resource="@string/asset_statements" />-->
         <meta-data
             android:name="asset_statements"
             android:resource="@string/asset_statements" />

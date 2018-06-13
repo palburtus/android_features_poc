@@ -16,12 +16,14 @@
         android:id="@+id/first_activity_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/first_activity_button_label"/>
 
     <Button
         android:id="@+id/news_activity_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/news_activity_button_label"/>
 
 </LinearLayout>

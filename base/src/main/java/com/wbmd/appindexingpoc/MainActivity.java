@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.common.wrappers.InstantApps;
 import com.wbmd.appindexingpoc.base.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,30 +16,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button firstActivityButton = (Button) findViewById(R.id.first_activity_button);
-        firstActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("click", "first");
-                Intent intent = new Intent();
-                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.FirstActivity");
-                intent.putExtra("message", "from app");
-                startActivity(intent);
-            }
-        });
-
         Button newsActivityButton = (Button) findViewById(R.id.news_activity_button);
-        newsActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("click", "news");
-                Intent intent = new Intent();
-                intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.MainDirectoryActivity");
-                intent.putExtra("message", "from app");
-                startActivity(intent);
-            }
-        });
+
+        if(InstantApps.isInstantApp(getApplicationContext())) {
+            firstActivityButton.setVisibility(View.VISIBLE);
+            firstActivityButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e("click", "first");
+                    Intent intent = new Intent();
+                    intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.FirstActivity");
+                    intent.putExtra("message", "from app");
+                    startActivity(intent);
+                }
+            });
+
+            newsActivityButton.setVisibility(View.VISIBLE);
+            newsActivityButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.e("click", "news");
+                    Intent intent = new Intent();
+                    intent.setClassName("com.wbmd.appindexingpoc", "com.wbmd.appindexingpoc.MainDirectoryActivity");
+                    intent.putExtra("message", "from app");
+                    startActivity(intent);
+                }
+            });
+        } else {
+            firstActivityButton.setVisibility(View.GONE);
+            newsActivityButton.setVisibility(View.GONE);
+        }
 
     }
 }
