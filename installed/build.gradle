@@ -1,16 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-
-
-
+    compileSdkVersion rootProject.compileSdk
     defaultConfig {
         applicationId "com.wbmd.appindexingpoc"
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 9
-        versionName "1.0.6"
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 15
+        versionName "2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
