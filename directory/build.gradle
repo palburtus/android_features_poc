@@ -1,12 +1,12 @@
 apply plugin: 'com.android.feature'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.compileSdk
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 10
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 11
         versionName "1.0.7"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
