@@ -35,5 +35,6 @@
         </activity>
         <activity android:name="com.wbmd.appindexingpoc.activity.MainDirectoryActivity" />
         <activity android:name="com.wbmd.appindexingpoc.activity.ProfileDetailsActivity" />
+        <activity android:name="com.wbmd.appindexingpoc.activity.ExtraItemActivity" />
     </application>
 </manifest>

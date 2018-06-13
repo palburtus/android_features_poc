@@ -87,7 +87,11 @@ public class ProfileDetailsActivity extends BaseActivity {
         mAdapter = new ExtraAdapter(mExtrasList, this, new ICallback() {
             @Override
             public void onItemClicked(Object o) {
-                InstantApps.showInstallPrompt(ProfileDetailsActivity.this, getPostInstallIntent(), 0, "instant");
+                Intent i = new Intent(ProfileDetailsActivity.this, ExtraItemActivity.class);
+                i.putExtra("profile", mProfile);
+                i.putExtra("extra", o.toString());
+                startActivity(i);
+//                InstantApps.showInstallPrompt(ProfileDetailsActivity.this, getPostInstallIntent(), 0, "instant");
             }
         });
         r.setAdapter(mAdapter);

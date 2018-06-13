@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button firstActivityButton = (Button) findViewById(R.id.first_activity_button);
         Button newsActivityButton = (Button) findViewById(R.id.news_activity_button);
 
-        if(InstantApps.isInstantApp(getApplicationContext())) {
+        if(!InstantApps.isInstantApp(getApplicationContext())) {
             firstActivityButton.setVisibility(View.VISIBLE);
             firstActivityButton.setOnClickListener(new View.OnClickListener() {
                 @Override
