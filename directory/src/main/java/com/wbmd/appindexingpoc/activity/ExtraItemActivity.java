@@ -6,8 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.instantapps.InstantApps;
 import com.wbmd.appindexingpoc.directory.R;
 import com.wbmd.appindexingpoc.model.Profile;
 
@@ -19,6 +22,7 @@ public class ExtraItemActivity extends BaseActivity {
 
     private String mExtraItem = "";
     private Profile mProfile = new Profile();
+    private Button mSeeArticleButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class ExtraItemActivity extends BaseActivity {
 
         setUpToolBar();
         setUpUi();
+        setUpConversionButton();
     }
 
     private void setUpUi() {
@@ -61,5 +66,20 @@ public class ExtraItemActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    private void setUpConversionButton() {
+        mSeeArticleButton = findViewById(R.id.see_more_button);
+        final Boolean isInstantApp = InstantApps.isInstantApp(this);
+        if (isInstantApp) {
+            mSeeArticleButton.setVisibility(View.VISIBLE);
+            mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InstantApps.showInstallPrompt(ExtraItemActivity.this, getPostInstallIntent(), 0, "instant");
+                }
+            });
+
+        }
     }
 }

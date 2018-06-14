@@ -32,23 +32,21 @@ public class BaseActivity extends AppCompatActivity {
                 finish();
             } else if (lastPath.equalsIgnoreCase("valilind.html")){
                 Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valilind");
+                startActivity(i);
+                finish();
+            } else if (lastPath.equalsIgnoreCase("valililind.html")){
+                Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valililind");
+                startActivity(i);
+                finish();
+            } else if (lastPath.equalsIgnoreCase("valilililind.html")){
+                Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valilililind");
                 startActivity(i);
                 finish();
             }
         }
-    }
-
-    public Profile getDefaultBaseballProfile(){
-        Profile p = new Profile();
-        p.setFullName("Jeff Valilind");
-        p.setLogo("ny_logo");
-        p.setAddress(this.getString(R.string.default_address_top));
-        p.setAddressBottom(this.getString(R.string.default_address_bottom));
-        p.setSpecialty(this.getString(R.string.default_baseball_specialty));
-        p.setLocationPhoto("baseball_location");
-        p.setPhoto("placeholder");
-
-        return p;
     }
 
     public Intent getPostInstallIntent() {

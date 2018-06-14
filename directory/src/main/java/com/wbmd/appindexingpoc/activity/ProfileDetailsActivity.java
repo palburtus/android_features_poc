@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,9 @@ import com.wbmd.appindexingpoc.adapter.ExtraAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.directory.R;
+
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,16 +42,19 @@ public class ProfileDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_profile_details);
 
         Intent i = getIntent();
-        if(i.getParcelableExtra(getString(R.string.profile)) == null){
-//            mProfile = getDefaultBaseballProfile();
+        if(i.getParcelableExtra(getString(R.string.profile)) == null && i.getStringExtra("path") != null){
+            String path = i.getStringExtra("path");
             Profile p = new Profile();
-            p.setFullName("Jeff Valilind");
-            p.setLogo("ny_logo");
-            p.setAddress(this.getString(R.string.default_address_top));
-            p.setAddressBottom(this.getString(R.string.default_address_bottom));
-            p.setSpecialty(this.getString(R.string.default_baseball_specialty));
-            p.setLocationPhoto("baseball_location");
-            p.setPhoto("placeholder");
+            Log.e("path", path);
+//            if(path.equalsIgnoreCase("valilind")){
+//
+//
+//            }
+//            p.setAddress(this.getString(R.string.default_address_top));
+//            p.setAddressBottom(this.getString(R.string.default_address_bottom));
+//            p.setSpecialty(this.getString(R.string.default_baseball_specialty));
+//            p.setLocationPhoto("baseball_location");
+//            p.setPhoto("placeholder");
             mProfile = p;
         } else {
             mProfile = i.getParcelableExtra(getString(R.string.profile));

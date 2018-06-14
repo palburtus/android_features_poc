@@ -80,27 +80,25 @@ public class MainDirectoryActivity extends BaseActivity {
         list = gson.fromJson(json, type);
 
         for (Profile profileItem : list) {
-//            profileItem = getDefaultBaseballProfile();
 //            profileItem.setFullName(cleanString(profileItem.getFullName()));
-            profileItem.setFullName(cleanString(profileItem.getFullName()));
-            profileItem.setLogo("ny_logo");
-            profileItem.setAddress(this.getString(R.string.default_address_top));
-            profileItem.setAddressBottom(this.getString(R.string.default_address_bottom));
-            profileItem.setSpecialty(this.getString(R.string.default_baseball_specialty));
-            profileItem.setLocationPhoto("baseball_location");
-            profileItem.setPhoto("placeholder");
+//            profileItem.setLogo("ny_logo");
+//            profileItem.setAddress(this.getString(R.string.default_address_top));
+//            profileItem.setAddressBottom(this.getString(R.string.default_address_bottom));
+//            profileItem.setSpecialty(this.getString(R.string.default_baseball_specialty));
+//            profileItem.setLocationPhoto("baseball_location");
+//            profileItem.setPhoto("placeholder");
         }
         return list;
     }
 
-    private String cleanString(String str){
-        String cleanString = str;
-        if(str.contains("\\")) {
-            int index = str.lastIndexOf('\\');
-            cleanString = str.substring(0, index);
-        }
-        return cleanString;
-    }
+//    private String cleanString(String str){
+//        String cleanString = str;
+//        if(str.contains("\\")) {
+//            int index = str.lastIndexOf('\\');
+//            cleanString = str.substring(0, index);
+//        }
+//        return cleanString;
+//    }
 
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
