@@ -1,12 +1,15 @@
 package com.wbmd.appindexingpoc.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,7 +28,7 @@ import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 
 
-public class MainDirectoryActivity extends BaseActivity {
+public class MainDirectoryActivity extends AppCompatActivity {
     private static final String TAG = MainDirectoryActivity.class.getSimpleName();
     private Button mSeeArticleButton;
     private DirectoryAdapter mAdapter;
@@ -103,7 +106,10 @@ public class MainDirectoryActivity extends BaseActivity {
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
         final Boolean isInstantApp = InstantApps.isInstantApp(this);
-        if (isInstantApp) {
+        Log.e("isInstantApp", isInstantApp.toString());
+
+//        if (isInstantApp) {
+            Log.e("isInstantApp", isInstantApp.toString());
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,7 +117,12 @@ public class MainDirectoryActivity extends BaseActivity {
                     InstantApps.showInstallPrompt(MainDirectoryActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-        }
+//        }
+    }
+
+    public Intent getPostInstallIntent() {
+        return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
+                .addCategory(Intent.CATEGORY_BROWSABLE);
     }
 
     private void setUpToolBar() {

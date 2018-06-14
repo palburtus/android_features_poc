@@ -1,9 +1,12 @@
 package com.wbmd.appindexingpoc.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +21,7 @@ import com.wbmd.appindexingpoc.model.Profile;
  * Created by acaldwell on 6/12/18.
  */
 
-public class ExtraItemActivity extends BaseActivity {
+public class ExtraItemActivity extends AppCompatActivity {
 
     private String mExtraItem = "";
     private Profile mProfile = new Profile();
@@ -63,6 +66,12 @@ public class ExtraItemActivity extends BaseActivity {
         return false;
     }
 
+
+    public Intent getPostInstallIntent() {
+        return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
+                .addCategory(Intent.CATEGORY_BROWSABLE);
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -71,7 +80,7 @@ public class ExtraItemActivity extends BaseActivity {
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
         final Boolean isInstantApp = InstantApps.isInstantApp(this);
-        if (isInstantApp) {
+//        if (isInstantApp) {
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,6 +89,6 @@ public class ExtraItemActivity extends BaseActivity {
                 }
             });
 
-        }
+//        }
     }
 }

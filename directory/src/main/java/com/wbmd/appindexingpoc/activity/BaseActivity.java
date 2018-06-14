@@ -49,10 +49,6 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public Intent getPostInstallIntent() {
-        return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
-                .addCategory(Intent.CATEGORY_BROWSABLE);
-    }
 }
 
 //    private Drawable getDrawableResource(String photoRef){

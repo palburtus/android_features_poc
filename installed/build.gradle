@@ -6,7 +6,7 @@ android {
         applicationId "com.wbmd.appindexingpoc"
         minSdkVersion rootProject.minSdk
         targetSdkVersion rootProject.targetSdk
-        versionCode 16
+        versionCode 17
         versionName "2.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -27,7 +27,6 @@ android {
 }
 
 dependencies {
-//    implementation project(':base')
     implementation project(':directory')
     implementation project(":stories")
 }
