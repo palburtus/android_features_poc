@@ -34,7 +34,7 @@ public class ExtraItemActivity extends BaseActivity {
 
     private void setUpUi() {
         TextView titleText = findViewById(R.id.title_text);
-        titleText.setText(mProfile.getSpecialty());
+        titleText.setText(mExtraItem);
     }
 
     private void setUpToolBar() {
@@ -42,9 +42,9 @@ public class ExtraItemActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         ActionBar bar = getSupportActionBar();
         if (bar != null) {
-            bar.setDisplayHomeAsUpEnabled(false);
+            bar.setDisplayHomeAsUpEnabled(true);
             bar.setDisplayShowTitleEnabled(true);
-            bar.setTitle(mExtraItem);
+            bar.setTitle(mProfile.getFullName());
         }
     }
 
