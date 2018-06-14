@@ -1,1 +1,1 @@
-include ':base', ':installed', ':instant', ':directory', ':stories'
+include ':installed', ':instant', ':directory', ':stories'

@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">AppIndexingPoc</string>
     <string name="default_address_top">395 Hudson St.</string>
     <string name="default_address_bottom">New York, NY 10014</string>
     <string name="default_baseball_specialty">Pitcher</string>
@@ -8,6 +9,7 @@
     <string name="google_play_link">https://play.google.com/store/apps/details?id=com.wbmd.appindexingpoc</string>
     <string name="profile">profile</string>
     <string name="player_roster_title">Player Roster</string>
+    <string name="baseball_players_with_facial_hair">Directory of baseball players with facial hair</string>
 
     <string-array name="baseball_extras">
         <item>Experience</item>
@@ -24,5 +26,5 @@
         <item>Office Information</item>
         <item>Is This You?</item>
     </string-array>
-
+    <string name="asset_statements" translatable="false">[{ \"include\": \"https://alburt.us/.well-known/assetlinks.json\" }]</string>
 </resources>

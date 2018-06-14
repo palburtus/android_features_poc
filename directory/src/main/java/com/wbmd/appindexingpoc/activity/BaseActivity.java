@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.directory.R;
@@ -24,6 +25,7 @@ public class BaseActivity extends AppCompatActivity {
         if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
             String lastPath = appLinkData.getLastPathSegment();
 
+            Log.e("lastpath", lastPath);
             if(lastPath.equalsIgnoreCase("directory.html")){
                 Intent i = new Intent(BaseActivity.this, MainDirectoryActivity.class);
                 startActivity(i);
