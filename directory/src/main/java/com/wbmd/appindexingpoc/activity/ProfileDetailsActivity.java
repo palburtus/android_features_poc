@@ -5,9 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,17 +17,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.instantapps.InstantApps;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.wbmd.appindexingpoc.adapter.ExtraAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.directory.R;
 
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class ProfileDetailsActivity extends BaseActivity {
+public class ProfileDetailsActivity extends AppCompatActivity {
 
     Profile mProfile;
     private ExtraAdapter mAdapter;
@@ -38,17 +48,9 @@ public class ProfileDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_profile_details);
 
         Intent i = getIntent();
-        if(i.getParcelableExtra(getString(R.string.profile)) == null){
-//            mProfile = getDefaultBaseballProfile();
-            Profile p = new Profile();
-            p.setFullName("Jeff Valilind");
-            p.setLogo("ny_logo");
-            p.setAddress(this.getString(R.string.default_address_top));
-            p.setAddressBottom(this.getString(R.string.default_address_bottom));
-            p.setSpecialty(this.getString(R.string.default_baseball_specialty));
-            p.setLocationPhoto("baseball_location");
-            p.setPhoto("placeholder");
-            mProfile = p;
+        if(i.getParcelableExtra(getString(R.string.profile)) == null && i.getStringExtra("path") != null){
+            String path = i.getStringExtra("path");
+           getBaseballProfile(path);
         } else {
             mProfile = i.getParcelableExtra(getString(R.string.profile));
         }
@@ -60,6 +62,35 @@ public class ProfileDetailsActivity extends BaseActivity {
         setUpConversionButton();
         loadUi();
         setUpToolBar();
+    }
+
+    private void getBaseballProfile(String path) {
+        mProfile = new Profile();
+        List<Profile> list = new ArrayList<>();
+        String json = null;
+        try {
+            InputStream is = ProfileDetailsActivity.this.getAssets().open("BaseballProfiles.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return;
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Profile>>() {
+        }.getType();
+        list = gson.fromJson(json, type);
+
+        for (Profile profileItem : list) {
+//            if(profileItem.getFullName().(path)){
+                Log.e("profile", profileItem.getFullName());
+                mProfile = profileItem;
+//            }
+
+        }
     }
 
     private void loadUi() {
@@ -87,7 +118,10 @@ public class ProfileDetailsActivity extends BaseActivity {
         mAdapter = new ExtraAdapter(mExtrasList, this, new ICallback() {
             @Override
             public void onItemClicked(Object o) {
-                InstantApps.showInstallPrompt(ProfileDetailsActivity.this, getPostInstallIntent(), 0, "instant");
+                Intent i = new Intent(ProfileDetailsActivity.this, ExtraItemActivity.class);
+                i.putExtra("profile", mProfile);
+                i.putExtra("extra", o.toString());
+                startActivity(i);
             }
         });
         r.setAdapter(mAdapter);
@@ -115,6 +149,12 @@ public class ProfileDetailsActivity extends BaseActivity {
         return false;
     }
 
+
+    public Intent getPostInstallIntent() {
+        return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
+                .addCategory(Intent.CATEGORY_BROWSABLE);
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -123,7 +163,7 @@ public class ProfileDetailsActivity extends BaseActivity {
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
         final Boolean isInstantApp = InstantApps.isInstantApp(this);
-        if (isInstantApp) {
+//        if (isInstantApp) {
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -132,6 +172,6 @@ public class ProfileDetailsActivity extends BaseActivity {
                 }
             });
 
-        }
+//        }
     }
 }

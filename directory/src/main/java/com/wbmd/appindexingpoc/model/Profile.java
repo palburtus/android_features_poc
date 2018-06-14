@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Profile implements Parcelable {
 
-    @SerializedName("Name")
+    @SerializedName("name")
     @Expose
     private String fullName;
     @SerializedName("specialty")

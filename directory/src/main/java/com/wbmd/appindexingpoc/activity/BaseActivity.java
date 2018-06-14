@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.directory.R;
@@ -24,35 +25,30 @@ public class BaseActivity extends AppCompatActivity {
         if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
             String lastPath = appLinkData.getLastPathSegment();
 
+            Log.e("lastpath", lastPath);
             if(lastPath.equalsIgnoreCase("directory.html")){
                 Intent i = new Intent(BaseActivity.this, MainDirectoryActivity.class);
                 startActivity(i);
                 finish();
             } else if (lastPath.equalsIgnoreCase("valilind.html")){
                 Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valilind");
+                startActivity(i);
+                finish();
+            } else if (lastPath.equalsIgnoreCase("valililind.html")){
+                Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valililind");
+                startActivity(i);
+                finish();
+            } else if (lastPath.equalsIgnoreCase("valilililind.html")){
+                Intent i = new Intent(BaseActivity.this, ProfileDetailsActivity.class);
+                i.putExtra("path", "valilililind");
                 startActivity(i);
                 finish();
             }
         }
     }
 
-    public Profile getDefaultBaseballProfile(){
-        Profile p = new Profile();
-        p.setFullName("Jeff Valilind");
-        p.setLogo("ny_logo");
-        p.setAddress(this.getString(R.string.default_address_top));
-        p.setAddressBottom(this.getString(R.string.default_address_bottom));
-        p.setSpecialty(this.getString(R.string.default_baseball_specialty));
-        p.setLocationPhoto("baseball_location");
-        p.setPhoto("placeholder");
-
-        return p;
-    }
-
-    public Intent getPostInstallIntent() {
-        return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
-                .addCategory(Intent.CATEGORY_BROWSABLE);
-    }
 }
 
 //    private Drawable getDrawableResource(String photoRef){

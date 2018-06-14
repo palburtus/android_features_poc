@@ -5,10 +5,6 @@ import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 
-/**
- * Created by acaldwell on 5/25/18.
- */
-
 public class BaseApplication extends Application {
     @Override
     public void onCreate() {
