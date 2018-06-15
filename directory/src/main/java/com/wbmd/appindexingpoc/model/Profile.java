@@ -9,9 +9,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class Profile implements Parcelable {
 
-    @SerializedName("name")
+    @SerializedName("first_name")
     @Expose
-    private String fullName;
+    private String firstName;
+    @SerializedName("last_name")
+    @Expose
+    private String lastName;
     @SerializedName("specialty")
     @Expose
     private String specialty;
@@ -35,7 +38,8 @@ public class Profile implements Parcelable {
     }
 
     protected Profile(Parcel in) {
-        fullName = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
         specialty = in.readString();
         addressTop = in.readString();
         addressBottom = in.readString();
@@ -56,12 +60,12 @@ public class Profile implements Parcelable {
         }
     };
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String firstName) {
-        this.fullName = firstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSpecialty() {
@@ -103,7 +107,8 @@ public class Profile implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(fullName);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
         dest.writeString(specialty);
         dest.writeString(addressTop);
         dest.writeString(addressBottom);
@@ -126,5 +131,13 @@ public class Profile implements Parcelable {
 
     public void setLocationPhoto(String locationPhoto) {
         this.locationPhoto = locationPhoto;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

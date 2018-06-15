@@ -17,27 +17,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.instantapps.InstantApps;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.wbmd.appindexingpoc.adapter.ExtraAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
 import com.wbmd.appindexingpoc.directory.R;
+import com.wbmd.appindexingpoc.network.ProfileService;
 
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class ProfileDetailsActivity extends AppCompatActivity {
-
+    private static final String TAG = ProfileDetailsActivity.class.getSimpleName();
     Profile mProfile;
     private ExtraAdapter mAdapter;
     private List<String> mExtrasList = new ArrayList<>();
@@ -51,7 +48,7 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         Intent i = getIntent();
         if(i.getParcelableExtra(getString(R.string.profile)) == null && i.getStringExtra("path") != null){
             String path = i.getStringExtra("path");
-           getBaseballProfile(path);
+            mProfile = getProfileForPath(path);
         } else {
             mProfile = i.getParcelableExtra(getString(R.string.profile));
         }
@@ -65,30 +62,15 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         setUpToolBar();
     }
 
-    private void getBaseballProfile(String path) {
-        mProfile = new Profile();
-        List<Profile> list = new ArrayList<>();
-        String json = null;
-        try {
-            InputStream is = ProfileDetailsActivity.this.getAssets().open("BaseballProfiles.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return;
+    private Profile getProfileForPath(String path){
+        List<Profile> list = getBaseballProfiles();
+        Profile profile = new Profile();
+        for(Profile p:list){
+            if(p.getLastName().equalsIgnoreCase(path)){
+                profile = p;
+            }
         }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Profile>>() {
-        }.getType();
-        list = gson.fromJson(json, type);
-
-        for (Profile profileItem : list) {
-                mProfile = profileItem;
-
-        }
+        return profile;
     }
 
     private void loadUi() {
@@ -108,7 +90,7 @@ public class ProfileDetailsActivity extends AppCompatActivity {
                 .load(mProfile.getLocationPhoto())
                 .into(locationImage);
 
-        name.setText(mProfile.getFullName());
+        name.setText(mProfile.getFirstName());
         specialty.setText(mProfile.getSpecialty());
         addressTop.setText(mProfile.getAddress());
         addressBottom.setText(mProfile.getAddressBottom());
@@ -153,7 +135,6 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         return false;
     }
 
-
     public Intent getPostInstallIntent() {
         return new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_link)))
                 .addCategory(Intent.CATEGORY_BROWSABLE);
@@ -174,4 +155,27 @@ public class ProfileDetailsActivity extends AppCompatActivity {
                 }
             });
             }
+
+    private List<Profile> getBaseballProfiles() {
+        final List<Profile> list = new ArrayList<>();
+        ProfileService service =  ProfileService.getService();
+        Call<List<Profile>> call = service.getBaseballProfiles();
+        call.enqueue(new Callback<List<Profile>>() {
+            @Override
+            public void onResponse(Call<List<Profile>> call, Response<List<Profile>> response) {
+                if(response.isSuccessful() && response.body() != null) {
+                    Log.e(TAG, response.message());
+                    list.addAll(response.body());
+                } else {
+                    Log.e(TAG, response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Profile>> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
+        return list;
+    }
 }

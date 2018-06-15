@@ -48,7 +48,6 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
 
     @Override
     public int getItemCount() {
-
         if(mProfileList != null && mProfileList.size() > 1){
             return mProfileList.size();
         } else {
@@ -57,7 +56,6 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryViewHolder>{
     }
 
     public void updateAdapter(List<Profile> list){
-        mProfileList.clear();
         mProfileList = list;
         notifyDataSetChanged();
     }

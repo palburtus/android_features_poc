@@ -1,6 +1,5 @@
 package com.wbmd.appindexingpoc.viewholder;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,7 +27,7 @@ public class DirectoryViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void onBind(Profile profile, View.OnClickListener listener){
-        mNameText.setText(profile.getFullName());
+        mNameText.setText(profile.getFirstName());
         mSpecialty.setText(profile.getSpecialty());
         mAddressTextTop.setText(profile.getAddress());
         mAddressTextBottom.setText(profile.getAddressBottom());

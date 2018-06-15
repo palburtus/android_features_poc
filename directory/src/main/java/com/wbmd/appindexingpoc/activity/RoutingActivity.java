@@ -7,7 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.wbmd.appindexingpoc.model.Profile;
+import com.wbmd.appindexingpoc.network.ProfileService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RoutingActivity extends AppCompatActivity {
+    private static final String TAG = RoutingActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,4 +56,7 @@ public class RoutingActivity extends AppCompatActivity {
             }
         }
     }
-}
+    }
+
+
+
