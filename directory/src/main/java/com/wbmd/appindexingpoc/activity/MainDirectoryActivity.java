@@ -1,5 +1,6 @@
 package com.wbmd.appindexingpoc.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,21 +28,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
+import com.wbmd.appindexingpoc.network.ProfileService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainDirectoryActivity extends AppCompatActivity {
     private static final String TAG = MainDirectoryActivity.class.getSimpleName();
     private Button mSeeArticleButton;
     private DirectoryAdapter mAdapter;
+    private List<Profile> mProfileList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_directory);
 
-        setUpToolBar();
         setUpRecyclerView();
-        mAdapter.updateAdapter(getBaseballProfileList());
+        setUpToolBar();
         setUpConversionButton();
     }
 
@@ -55,6 +62,7 @@ public class MainDirectoryActivity extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(mAdapter);
+        getBaseballProfiles();
     }
 
     private void handleListItemClicked(Profile profile) {
@@ -63,53 +71,8 @@ public class MainDirectoryActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private List<Profile> getBaseballProfileList() {
-        List<Profile> list = new ArrayList<>();
-        String json = null;
-        try {
-            InputStream is = MainDirectoryActivity.this.getAssets().open("BaseballProfiles.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Profile>>() {
-        }.getType();
-        list = gson.fromJson(json, type);
-
-        for (Profile profileItem : list) {
-//            profileItem.setFullName(cleanString(profileItem.getFullName()));
-//            profileItem.setLogo("ny_logo");
-//            profileItem.setAddress(this.getString(R.string.default_address_top));
-//            profileItem.setAddressBottom(this.getString(R.string.default_address_bottom));
-//            profileItem.setSpecialty(this.getString(R.string.default_baseball_specialty));
-//            profileItem.setLocationPhoto("baseball_location");
-//            profileItem.setPhoto("placeholder");
-        }
-        return list;
-    }
-
-//    private String cleanString(String str){
-//        String cleanString = str;
-//        if(str.contains("\\")) {
-//            int index = str.lastIndexOf('\\');
-//            cleanString = str.substring(0, index);
-//        }
-//        return cleanString;
-//    }
-
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
-        final Boolean isInstantApp = InstantApps.isInstantApp(this);
-        Log.e("isInstantApp", isInstantApp.toString());
-
-//        if (isInstantApp) {
-            Log.e("isInstantApp", isInstantApp.toString());
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,7 +80,6 @@ public class MainDirectoryActivity extends AppCompatActivity {
                     InstantApps.showInstallPrompt(MainDirectoryActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-//        }
     }
 
     public Intent getPostInstallIntent() {
@@ -134,5 +96,21 @@ public class MainDirectoryActivity extends AppCompatActivity {
             bar.setDisplayShowTitleEnabled(true);
             bar.setTitle(R.string.player_roster_title);
         }
+    }
+    private void getBaseballProfiles() {
+        ProfileService service =  ProfileService.getService();
+        Call<List<Profile>> call = service.getBaseballProfiles();
+        call.enqueue(new Callback<List<Profile>>() {
+            @Override
+            public void onResponse(Call<List<Profile>> call, Response<List<Profile>> response) {
+                    Log.e(TAG, response.message());
+                    mAdapter.updateAdapter(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Profile>> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
     }
 }
