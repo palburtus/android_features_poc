@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.google.android.instantapps.InstantApps;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.squareup.picasso.Picasso;
 import com.wbmd.appindexingpoc.adapter.ExtraAdapter;
 import com.wbmd.appindexingpoc.callback.ICallback;
 import com.wbmd.appindexingpoc.model.Profile;
@@ -85,10 +86,7 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         list = gson.fromJson(json, type);
 
         for (Profile profileItem : list) {
-//            if(profileItem.getFullName().(path)){
-                Log.e("profile", profileItem.getFullName());
                 mProfile = profileItem;
-//            }
 
         }
     }
@@ -102,8 +100,14 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         TextView addressTop = findViewById(R.id.profile_practice_address_top);
         TextView addressBottom = findViewById(R.id.profile_practice_address_bottom);
 
-        profileImage.setImageDrawable(getDrawable(R.drawable.ny_logo));
-        locationImage.setImageDrawable(getDrawable(R.drawable.baseball_location));
+        Picasso.with(this)
+                .load(mProfile.getPhoto())
+                .into(profileImage);
+
+        Picasso.with(this)
+                .load(mProfile.getLocationPhoto())
+                .into(locationImage);
+
         name.setText(mProfile.getFullName());
         specialty.setText(mProfile.getSpecialty());
         addressTop.setText(mProfile.getAddress());
@@ -162,8 +166,6 @@ public class ProfileDetailsActivity extends AppCompatActivity {
 
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
-        final Boolean isInstantApp = InstantApps.isInstantApp(this);
-//        if (isInstantApp) {
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -171,7 +173,5 @@ public class ProfileDetailsActivity extends AppCompatActivity {
                     InstantApps.showInstallPrompt(ProfileDetailsActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-
-//        }
-    }
+            }
 }

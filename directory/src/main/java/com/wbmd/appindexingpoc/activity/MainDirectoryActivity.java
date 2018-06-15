@@ -89,11 +89,6 @@ public class MainDirectoryActivity extends AppCompatActivity {
 
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
-        final Boolean isInstantApp = InstantApps.isInstantApp(this);
-        Log.e("isInstantApp", isInstantApp.toString());
-
-//        if (isInstantApp) {
-            Log.e("isInstantApp", isInstantApp.toString());
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +96,6 @@ public class MainDirectoryActivity extends AppCompatActivity {
                     InstantApps.showInstallPrompt(MainDirectoryActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-//        }
     }
 
     public Intent getPostInstallIntent() {

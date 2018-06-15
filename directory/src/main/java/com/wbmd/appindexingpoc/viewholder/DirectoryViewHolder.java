@@ -35,7 +35,6 @@ public class DirectoryViewHolder extends RecyclerView.ViewHolder{
 
         Picasso.with(itemView.getContext())
                 .load(profile.getPhoto())
-                .error(R.drawable.ny_logo)
                 .into(mProfileImage);
 
         itemView.setOnClickListener(listener);

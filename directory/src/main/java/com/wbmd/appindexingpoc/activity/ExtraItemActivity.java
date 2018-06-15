@@ -79,8 +79,6 @@ public class ExtraItemActivity extends AppCompatActivity {
 
     private void setUpConversionButton() {
         mSeeArticleButton = findViewById(R.id.see_more_button);
-        final Boolean isInstantApp = InstantApps.isInstantApp(this);
-//        if (isInstantApp) {
             mSeeArticleButton.setVisibility(View.VISIBLE);
             mSeeArticleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,7 +86,5 @@ public class ExtraItemActivity extends AppCompatActivity {
                     InstantApps.showInstallPrompt(ExtraItemActivity.this, getPostInstallIntent(), 0, "instant");
                 }
             });
-
-//        }
-    }
+            }
 }

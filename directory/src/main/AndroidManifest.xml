@@ -14,7 +14,7 @@
             android:name="asset_statements"
             android:resource="@string/asset_statements" />
 
-        <activity android:name="com.wbmd.appindexingpoc.activity.BaseActivity">
+        <activity android:name="com.wbmd.appindexingpoc.activity.RoutingActivity">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
